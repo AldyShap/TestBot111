@@ -1,8 +1,7 @@
 from aiogram import Router, F
 from aiogram.filters import Command,CommandStart
 from aiogram.types import Message, CallbackQuery
-import keyboards as kb
-
+from app import keyboards as kb
 router = Router()
 
 @router.message(CommandStart())
@@ -26,4 +25,5 @@ async def ping_pong(message:Message):
 @router.callback_query(F.data == 'pong')
 async def ponging(callback:CallbackQuery):
     await callback.answer()
+
     await callback.message.answer("pong")
